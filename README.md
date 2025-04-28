@@ -1,13 +1,13 @@
 Candidato Nicolás Roa
 
 
-Para ejecutar mediante stackblitz
+**Para ejecutar mediante stackblitz**
 https://stackblitz.com/~/github.com/BlueWay32Dev/prueba-tecnica-atom-nicolas-roa
 
-desde la consola del editor se debe: 
-cd front
-npm install
-npm start
+**Desde la consola del editor se debe**: 
+* cd front
+* npm install
+* npm start
 
 
 Documentacion completa
