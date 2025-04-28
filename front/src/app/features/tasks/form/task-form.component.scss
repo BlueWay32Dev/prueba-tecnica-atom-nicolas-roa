@@ -4,6 +4,7 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .task-form {
@@ -21,13 +22,25 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+}
 
-  .btn-create-task{
-    background: #{$orange};
+.btn-create-task {
+  background: #{$orange};
+}
+
+.btn-return-login {
+  background: #{$purpure};
+  color: #{$white-text};
+}
+
+@media (max-width: 767px) {
+  .buttons {
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .btn-return-login{
-    background: #{$purpure};
-    color: #{$white-text};
+  .btn-create-task,
+  .btn-return-login {
+    width: 100%;
   }
 }

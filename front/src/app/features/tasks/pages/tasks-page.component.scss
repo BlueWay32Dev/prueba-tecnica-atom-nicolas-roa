@@ -1,18 +1,26 @@
 .task-page-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
-  height: 100%;
   box-sizing: border-box;
+  height: 100%;
 }
 
-.left-panel {
-  flex: 1;
-  max-width: 50%;
+.left-panel,
+.right-panel {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .left-panel,
+  .right-panel {
+    flex: 1;
+    max-width: 50%;
+  }
 }
 
 .right-panel {
-  flex: 1;
-  max-width: 50%;
   overflow-y: auto;
 }

@@ -1,7 +1,9 @@
+@import "../../../../styles/variables";
+
 .task-list-wrapper {
   padding: 2rem;
   height: 100%;
-  background: #f5f5f5;
+  background: #{$white-soft};
 }
 
 .task-card {
@@ -26,20 +28,39 @@
 
 .task-actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .buttons {
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .created-at {
   display: flex;
   align-items: center;
   font-weight: bold;
-  color: #555;
+  color: #{$text-black};
   gap: 5px;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .task-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .created-at {
+    margin-top: 0;
+  }
 }
