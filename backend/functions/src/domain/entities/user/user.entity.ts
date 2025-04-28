@@ -9,7 +9,7 @@ export class User {
     return {
       id: this.id,
       email: this.email,
-      createdAt: this.createdAt,
+      createdAt: this.createdAt.toISOString(),
     };
   }
 }
