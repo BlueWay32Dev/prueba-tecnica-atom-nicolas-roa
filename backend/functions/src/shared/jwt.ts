@@ -22,7 +22,7 @@ export const generateAccessToken = (user: User): string => {
     email: user.email,
   };
 
-  return jwt.sign(payload, secret, {expiresIn: "1m"});
+  return jwt.sign(payload, secret, {expiresIn: "3d"});
 };
 
 export const generateRefreshToken = (user: User): string => {
