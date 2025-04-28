@@ -1,0 +1,33 @@
+@import "../../../../styles/variables";
+
+.task-form-card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .btn-create-task{
+    background: #{$orange};
+  }
+
+  .btn-return-login{
+    background: #{$purpure};
+    color: #{$white-text};
+  }
+}

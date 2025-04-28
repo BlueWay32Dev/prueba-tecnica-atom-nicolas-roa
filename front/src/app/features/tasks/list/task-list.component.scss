@@ -1,0 +1,45 @@
+.task-list-wrapper {
+  padding: 2rem;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.task-card {
+  margin-bottom: 1.5rem;
+}
+
+.task-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.task-description {
+  margin: 0;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.created-at {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #555;
+  gap: 5px;
+}

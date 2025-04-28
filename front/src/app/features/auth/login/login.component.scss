@@ -1,0 +1,62 @@
+@import 'variables';
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #{$white-soft};
+}
+
+.login-card {
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  color: #{$white-text};
+  --mdc-elevated-card-container-color: #{$blue} !important;
+
+  .btn-login.mdc-button{
+    display: flex;
+    margin-top: 5px;
+    background: #{$orange};
+    color: #{$white-text};
+    --mdc-protected-button-container-color: #{$orange} !important;
+    --mdc-protected-button-label-text-color: #{$white-text} !important;
+    width: 100%;
+    height: 46px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #{$orange};
+  --mdc-outlined-text-field-focus-outline-color: #{$orange};
+  --mdc-outlined-text-field-label-text-color: #{$orange};
+  --mdc-outlined-text-field-focused-label-color: #{$orange};
+  --mdc-outlined-text-field-caret-color: #{$orange};
+  --mdc-outlined-text-field-placeholder-color: #{$orange};
+  --mdc-outlined-text-field-input-text-color: #{$orange};
+  --mdc-outlined-text-field-hover-outline-color: #{$orange};
+}
+
+
+.mdc-floating-label {
+  color: #{$orange} !important;
+}
+
+
+
+
+  .full-width {
+    width: 100%;
+  }
+
+  .button-spinner {
+    margin-right: 8px;
+  }
+

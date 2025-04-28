@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:host {
+  .mat-mdc-text-field-wrapper {
+    --mdc-outlined-text-field-outline-color: #F26B1D;
+    --mdc-outlined-text-field-focus-outline-color: #F26B1D;
+    --mdc-outlined-text-field-label-text-color: #F26B1D;
+    --mdc-outlined-text-field-focused-label-color: #F26B1D;
+    --mdc-outlined-text-field-caret-color: #F26B1D;
+    --mdc-outlined-text-field-input-text-color: #ffffff; // texto blanco si tenís fondo oscuro
+    --mdc-outlined-text-field-placeholder-color: #F26B1D;
+  }
+}
+

@@ -1,0 +1,18 @@
+.task-page-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.left-panel {
+  flex: 1;
+  max-width: 50%;
+}
+
+.right-panel {
+  flex: 1;
+  max-width: 50%;
+  overflow-y: auto;
+}
