@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { authRoutes } from "./infraestructure/routes/auth/auth.routes";
+import { taskRoutes } from "./infraestructure/routes/task/task.routes";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -14,5 +15,6 @@ app.put("*", express.json());
 app.patch("*", express.json());
 
 app.use("/auth", authRoutes);
+app.use("/tasks", taskRoutes);
 
 export default app;
