@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { User } from "../domain/entities/user/user.entity";
+import {User} from "../domain/entities/user/user.entity";
 
 interface AccessTokenPayload {
   sub: string;
@@ -22,7 +22,7 @@ export const generateAccessToken = (user: User): string => {
     email: user.email,
   };
 
-  return jwt.sign(payload, secret, { expiresIn: "1m" });
+  return jwt.sign(payload, secret, {expiresIn: "1m"});
 };
 
 export const generateRefreshToken = (user: User): string => {
@@ -34,7 +34,7 @@ export const generateRefreshToken = (user: User): string => {
     sub: user.id,
   };
 
-  return jwt.sign(payload, secret, { expiresIn: "7d" });
+  return jwt.sign(payload, secret, {expiresIn: "7d"});
 };
 
 export const getUserIdFromRequest = (request: any): string => {

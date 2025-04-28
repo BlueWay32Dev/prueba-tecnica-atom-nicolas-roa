@@ -1,8 +1,8 @@
-import { FirestoreTaskRepository } from "./task.repository";
-import { Task } from "../../../domain/entities/task/task.entity";
-import { CreateTaskDto } from "../../../domain/dtos/task/create-task.dto";
-import { UpdateTaskDto } from "../../../domain/dtos/task/update-task.dto";
-import { db } from "../../firebase/firestore.config";
+import {FirestoreTaskRepository} from "./task.repository";
+import {Task} from "../../../domain/entities/task/task.entity";
+import {CreateTaskDto} from "../../../domain/dtos/task/create-task.dto";
+import {UpdateTaskDto} from "../../../domain/dtos/task/update-task.dto";
+import {db} from "../../firebase/firestore.config";
 
 jest.mock("../../firebase/firestore.config", () => ({
   db: {
@@ -77,7 +77,7 @@ describe("FirestoreTaskRepository", () => {
             title: taskTitle,
             description: taskDescription,
             completed: taskCompleted,
-            createdAt: { toDate: () => createdAt },
+            createdAt: {toDate: () => createdAt},
           }),
         },
         {
@@ -86,12 +86,12 @@ describe("FirestoreTaskRepository", () => {
             title: "Otra tarea",
             description: "Otra descripción",
             completed: true,
-            createdAt: { toDate: () => createdAt },
+            createdAt: {toDate: () => createdAt},
           }),
         },
       ];
 
-      mockWhereRef.get.mockResolvedValueOnce({ docs: mockDocs });
+      mockWhereRef.get.mockResolvedValueOnce({docs: mockDocs});
 
       const result = await repository.findByUserId(userId);
 
@@ -105,7 +105,7 @@ describe("FirestoreTaskRepository", () => {
     });
 
     it("Debe devolver un array vacio cuando no hayan tareas", async () => {
-      mockWhereRef.get.mockResolvedValueOnce({ docs: [] });
+      mockWhereRef.get.mockResolvedValueOnce({docs: []});
       const result = await repository.findByUserId(userId);
 
       expect(result).toEqual([]);
@@ -131,7 +131,7 @@ describe("FirestoreTaskRepository", () => {
           title: "Nuevo titulo",
           description: taskDescription,
           completed: true,
-          createdAt: { toDate: () => createdAt },
+          createdAt: {toDate: () => createdAt},
         }),
       });
 
@@ -139,14 +139,14 @@ describe("FirestoreTaskRepository", () => {
 
       expect(db.collection).toHaveBeenCalledWith("tasks");
       expect(mockCollection.doc).toHaveBeenCalledWith("task-123");
-      expect(mockDocRef.set).toHaveBeenCalledWith(updateData, { merge: true });
+      expect(mockDocRef.set).toHaveBeenCalledWith(updateData, {merge: true});
       expect(result).toBeInstanceOf(Task);
       expect(result?.title).toBe("Nuevo titulo");
       expect(result?.completed).toBe(true);
     });
 
     it("Debe devolver null cuando la tarea no existe", async () => {
-      mockDocRef.get.mockResolvedValueOnce({ exists: false });
+      mockDocRef.get.mockResolvedValueOnce({exists: false});
 
       const result = await repository.update("non-existent-id", {
         title: "Nuevo titulo",
