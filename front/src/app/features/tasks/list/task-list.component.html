@@ -1,0 +1,53 @@
+<div class="task-list-wrapper">
+  <h2>Mis Tareas</h2>
+
+  <div class="task-scroll-container" *ngIf="(tasks$ | async) as tasks">
+    <ng-container *ngIf="tasks.length > 0; else noTasks">
+      <mat-card *ngFor="let task of tasks" class="task-card">
+        <mat-card-content class="task-card-content">
+
+          <ng-container *ngIf="loadingTaskId === task.id; else showTask">
+            <div class="loading-container">
+              <mat-spinner diameter="40"></mat-spinner>
+            </div>
+          </ng-container>
+
+          <ng-template #showTask>
+            <h3 class="task-title">{{ task.title }}</h3>
+            <p class="task-description">{{ task.description }}</p>
+
+            <mat-checkbox
+              [checked]="task.completed"
+              (change)="toggleCompleted(task)"
+            >
+              Completado
+            </mat-checkbox>
+
+            <div class="task-actions">
+              <div class="buttons">
+                <button mat-raised-button color="primary" (click)="editTask(task)">
+                  <mat-icon>edit</mat-icon> Editar
+                </button>
+                <button mat-raised-button color="warn" (click)="deleteTask(task.id!)">
+                  <mat-icon>delete</mat-icon> Eliminar
+                </button>
+              </div>
+
+              <div class="created-at">
+                <mat-icon>schedule</mat-icon>
+                <span><strong>Creado:</strong> {{ task.createdAt | date:'short' }}</span>
+              </div>
+            </div>
+          </ng-template>
+
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #noTasks>
+      <div class="empty-message">
+        No hay tareas disponibles.
+      </div>
+    </ng-template>
+  </div>
+</div>
