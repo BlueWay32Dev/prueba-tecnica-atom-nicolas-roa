@@ -1,7 +1,8 @@
-import { FirestoreUserRepository } from "../../../infraestructure/repositories/user/user.repository";
-import { User } from "../../../domain/entities/user/user.entity";
-import { db } from "../../firebase/firestore.config";
-import { v4 as uuid } from "uuid";
+import {FirestoreUserRepository}
+  from "../../../infraestructure/repositories/user/user.repository";
+import {User} from "../../../domain/entities/user/user.entity";
+import {db} from "../../firebase/firestore.config";
+import {v4 as uuid} from "uuid";
 
 jest.mock("../../firebase/firestore.config", () => ({
   db: {
@@ -28,7 +29,7 @@ describe("FirestoreUserRepository", () => {
   const mockLimitRef = {
     get: jest.fn(),
   };
-  const testEmail = "test@example.com";
+  const testEmail = "test@atom.com";
   const testId = "user-123";
   const testCreatedAt = new Date();
 
@@ -49,7 +50,7 @@ describe("FirestoreUserRepository", () => {
           id: testId,
           data: () => ({
             email: testEmail,
-            createdAt: { toDate: () => testCreatedAt },
+            createdAt: {toDate: () => testCreatedAt},
           }),
         },
       ];
@@ -81,7 +82,7 @@ describe("FirestoreUserRepository", () => {
         docs: [],
       });
 
-      const result = await repository.findByEmail("nonexistent@example.com");
+      const result = await repository.findByEmail("nonexistent@atom.com");
 
       expect(result).toBeNull();
     });

@@ -1,14 +1,14 @@
-import { Request, Response } from "express";
-import { FirestoreUserRepository } from "../../repositories/user/user.repository";
-import { AuthService } from "../../../application/services/auth/auth.services";
-import { generateAccessToken, verifyRefreshToken } from "../../../shared/jwt";
-import { User } from "../../../domain/entities/user/user.entity";
+import {Request, Response} from "express";
+import {FirestoreUserRepository} from "../../repositories/user/user.repository";
+import {AuthService} from "../../../application/services/auth/auth.services";
+import {generateAccessToken, verifyRefreshToken} from "../../../shared/jwt";
+import {User} from "../../../domain/entities/user/user.entity";
 
 const userRepo = new FirestoreUserRepository();
 const authService = new AuthService(userRepo);
 
 const hasEmailEmpty = (request: Request): string => {
-  const { email } = request.body;
+  const {email} = request.body;
   if (!email) throw new Error("EMPTY_EMAIL");
   return email;
 };
@@ -21,30 +21,30 @@ export const loginHandler = async (request: Request, response: Response) => {
     if (!token) {
       return response
         .status(200)
-        .json({ message: "El usuario no existe!", credentials: false });
+        .json({message: "El usuario no existe!", credentials: false});
     }
 
     return response.status(200).json(token);
   } catch (e) {
     const error = e as Error;
     if (error.message === "EMPTY_EMAIL") {
-      return response.status(400).json({ message: "Correo es requerido" });
+      return response.status(400).json({message: "Correo es requerido"});
     }
-    return response.status(500).json({ message: "Error interno del servidor" });
+    return response.status(500).json({message: "Error interno del servidor"});
   }
 };
 
 export const registerHandler = async (request: Request, response: Response) => {
   try {
-    const { email } = request.body;
+    const {email} = request.body;
     const token = await authService.register(email);
     return response.status(200).json(token);
   } catch (e) {
     const error = e as Error;
     if (error.message === "USER_ALREADY_EXISTS") {
-      return response.status(400).json({ message: "El usuario ya existe" });
+      return response.status(400).json({message: "El usuario ya existe"});
     }
-    return response.status(500).json({ message: "Error interno del servidor" });
+    return response.status(500).json({message: "Error interno del servidor"});
   }
 };
 
@@ -55,7 +55,7 @@ export const refreshHandler = async (request: Request, response: Response) => {
     if (!authHeader) {
       return response
         .status(400)
-        .json({ message: "Refrescar el token es requerido" });
+        .json({message: "Refrescar el token es requerido"});
     }
 
     const token = authHeader.split(" ")[1];
@@ -63,7 +63,7 @@ export const refreshHandler = async (request: Request, response: Response) => {
     if (!token) {
       return response
         .status(400)
-        .json({ message: "Refrescar el token es requerido" });
+        .json({message: "Refrescar el token es requerido"});
     }
 
     const payload = verifyRefreshToken(token);
@@ -71,16 +71,16 @@ export const refreshHandler = async (request: Request, response: Response) => {
     if (!payload) {
       return response
         .status(401)
-        .json({ message: "Token inválido o expirado" });
+        .json({message: "Token inválido o expirado"});
     }
 
-    const { sub, email } = payload;
+    const {sub, email} = payload;
 
     const accessToken = generateAccessToken(new User(sub, email, new Date()));
 
-    return response.status(200).json({ accessToken });
+    return response.status(200).json({accessToken});
   } catch (e) {
     console.error(e);
-    return response.status(401).json({ message: "Token inválido o expirado" });
+    return response.status(401).json({message: "Token inválido o expirado"});
   }
 };

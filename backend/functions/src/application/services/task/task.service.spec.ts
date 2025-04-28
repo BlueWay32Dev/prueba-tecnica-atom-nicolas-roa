@@ -1,8 +1,8 @@
-import { TaskService } from "../../../application/services/task/task.service";
-import { TaskRepository } from "../../../domain/repository/task/task.repository";
-import { Task } from "../../../domain/entities/task/task.entity";
-import { CreateTaskDto } from "../../../domain/dtos/task/create-task.dto";
-import { UpdateTaskDto } from "../../../domain/dtos/task/update-task.dto";
+import {TaskService} from "../../../application/services/task/task.service";
+import {TaskRepository} from "../../../domain/repository/task/task.repository";
+import {Task} from "../../../domain/entities/task/task.entity";
+import {CreateTaskDto} from "../../../domain/dtos/task/create-task.dto";
+import {UpdateTaskDto} from "../../../domain/dtos/task/update-task.dto";
 
 describe("TaskService", () => {
   const mockTaskRepository: jest.Mocked<TaskRepository> = {
@@ -60,7 +60,7 @@ describe("TaskService", () => {
 
   describe("updateTask", () => {
     it("Debe actualizar la tarea y devolver la tarea actualizada", async () => {
-      const updatedTask = { ...mockTask, title: "Updated Task" };
+      const updatedTask = {...mockTask, title: "Updated Task"};
       mockTaskRepository.update.mockResolvedValue(updatedTask);
 
       const result = await taskService.updateTask(

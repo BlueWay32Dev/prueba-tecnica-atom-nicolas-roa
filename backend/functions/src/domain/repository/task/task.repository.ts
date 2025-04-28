@@ -1,6 +1,6 @@
-import { Task } from "../../entities/task/task.entity";
-import { CreateTaskDto } from "../../dtos/task/create-task.dto";
-import { UpdateTaskDto } from "../../dtos/task/update-task.dto";
+import {Task} from "../../entities/task/task.entity";
+import {CreateTaskDto} from "../../dtos/task/create-task.dto";
+import {UpdateTaskDto} from "../../dtos/task/update-task.dto";
 
 export interface TaskRepository {
   create(data: CreateTaskDto): Promise<Task>;

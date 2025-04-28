@@ -12,5 +12,6 @@
     "types": ["jest", "node"]
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": ["src/**/*.ts", "src/**/*.spec.ts"],
+  "exclude": []
 }

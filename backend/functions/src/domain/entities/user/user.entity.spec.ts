@@ -1,4 +1,4 @@
-import { User } from "../../../domain/entities/user/user.entity";
+import {User} from "../../../domain/entities/user/user.entity";
 
 describe("User Entity", () => {
   it("Debe crear un usuario instanciado con todas sus propiedades", () => {
